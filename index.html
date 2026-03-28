@@ -1,100 +1,520 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grama FYF | Césped Premium en General Rodríguez</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        html { scroll-behavior: smooth; }
-        .hero-gradient {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1533460004989-cef01064af7c?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
-</head>
-<body class="bg-slate-50 text-slate-800 font-sans">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grama FYF — Césped Premium en General Rodríguez</title>
+  <meta name="description" content="Panes de grama premium cultivados en campo propio en General Rodríguez. Grama Bahiana, Bermuda y Esmeralda. Entrega en el día." />
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <div class="bg-emerald-600 p-1.5 rounded-lg text-white">
-                    <i data-lucide="leaf" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xl font-black text-emerald-900 tracking-tight">GRAMA FYF</span>
-            </div>
-            <a href="https://wa.me/5491100000000" id="btn-nav" target="_blank" class="bg-emerald-600 text-white px-6 py-2 rounded-full font-bold hover:bg-emerald-700 transition shadow-md flex items-center gap-2 text-sm md:text-base">
-                <i data-lucide="phone" class="w-4 h-4"></i> Pedir Presupuesto
-            </a>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Playfair Display + Lato -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <!-- Lucide icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest:  { DEFAULT: '#1a3a2a', light: '#2d5a3d', xlight: '#3d7a52' },
+            sage:    { DEFAULT: '#8aad8e', light: '#b5ceb8', xlight: '#ddeedd' },
+            cream:   { DEFAULT: '#f7f3ee', dark: '#ede7dc' },
+            bark:    { DEFAULT: '#3d2b1f', light: '#6b4c3b' },
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            body:    ['Lato', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #1a3a2a; }
+    ::-webkit-scrollbar-thumb { background: #3d7a52; border-radius: 99px; }
+
+    .nav-link.active { color: #8aad8e; border-left: 2px solid #8aad8e; padding-left: 12px; }
+
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+      background-size: 180px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.75s ease both; }
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.30s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.60s; }
+
+    .hero-text { text-shadow: 0 2px 40px rgba(0,0,0,0.6); }
+    .calc-input:focus { outline: none; box-shadow: 0 0 0 3px rgba(61,122,82,0.35); }
+    .grass-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .grass-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(26,58,42,0.18); }
+  </style>
+</head>
+
+<body class="font-body bg-cream text-forest" style="font-family:'Lato',sans-serif">
+
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar"
+    class="fixed top-0 left-0 h-full w-64 z-40 flex flex-col
+           bg-forest text-white
+           -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+
+    <div class="px-8 pt-10 pb-8 border-b border-forest-light">
+      <div class="flex items-center gap-3 mb-1">
+        <div class="w-9 h-9 rounded-full bg-sage-xlight flex items-center justify-center">
+          <i data-lucide="leaf" class="text-forest w-5 h-5"></i>
         </div>
+        <span class="font-display text-2xl font-bold tracking-tight">Grama FYF</span>
+      </div>
+      <p class="text-sage text-xs mt-2 leading-snug">Césped premium · General Rodríguez</p>
+    </div>
+
+    <nav class="flex-1 px-8 py-8 flex flex-col gap-1">
+      <a href="#inicio"       class="nav-link text-sm text-white/70 hover:text-sage py-2 transition-colors">Inicio</a>
+      <a href="#nosotros"     class="nav-link text-sm text-white/70 hover:text-sage py-2 transition-colors">Quiénes somos</a>
+      <a href="#cesped"       class="nav-link text-sm text-white/70 hover:text-sage py-2 transition-colors">Tipos de Césped</a>
+      <a href="#calculadora"  class="nav-link text-sm text-white/70 hover:text-sage py-2 transition-colors">Calculadora</a>
     </nav>
 
-    <header class="hero-gradient h-[80vh] flex items-center justify-center text-center text-white px-6">
-        <div class="max-w-3xl pt-16">
-            <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">Tu jardín verde <br><span class="text-emerald-400 font-medium text-3xl md:text-5xl">en un solo día.</span></h1>
-            <p class="text-lg mb-8 text-slate-100 max-w-xl mx-auto font-medium">Césped premium directo de cultivo en General Rodríguez. Entrega inmediata de panes frescos.</p>
-            <a href="#calculadora" class="bg-white text-emerald-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-emerald-50 transition shadow-xl inline-block">Calcular metros</a>
+    <div class="px-8 pb-10">
+      <a href="https://wa.me/5491169670130"
+         target="_blank" rel="noreferrer"
+         class="flex items-center justify-center gap-2 w-full py-3 rounded-xl
+                bg-sage-xlight text-forest font-bold text-sm
+                hover:bg-sage-light transition-colors shadow-md">
+        <i data-lucide="message-circle" class="w-4 h-4"></i>
+        Contactanos
+      </a>
+      <p class="text-white/30 text-[10px] text-center mt-4">© 2025 Grama FYF. Hecho con 🌿</p>
+    </div>
+  </aside>
+
+  <!-- MOBILE TOPBAR -->
+  <header class="lg:hidden fixed top-0 left-0 right-0 z-50 bg-forest/90 backdrop-blur-md px-5 h-16 flex items-center justify-between border-b border-forest-light">
+    <div class="flex items-center gap-2">
+      <div class="w-7 h-7 rounded-full bg-sage-xlight flex items-center justify-center">
+        <i data-lucide="leaf" class="text-forest w-4 h-4"></i>
+      </div>
+      <span class="text-white font-display font-bold text-xl">Grama FYF</span>
+    </div>
+    <button id="menuToggle" class="text-white p-1">
+      <i data-lucide="menu" class="w-6 h-6" id="menuIcon"></i>
+    </button>
+  </header>
+
+  <div id="overlay" class="fixed inset-0 z-30 bg-black/50 hidden lg:hidden" onclick="closeSidebar()"></div>
+
+  <!-- MAIN -->
+  <main class="flex-1 lg:ml-64 pt-16 lg:pt-0">
+
+    <!-- 1. HERO -->
+    <section id="inicio" class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden grain">
+      <!-- 📸 Reemplazá esta URL con tu foto de campo -->
+      <div class="absolute inset-0 bg-cover bg-center"
+           style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80')">
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-br from-forest/80 via-forest/60 to-black/40"></div>
+
+      <div class="relative z-10 text-center text-white px-6 max-w-3xl mx-auto">
+        <p class="fade-up text-sage text-xs uppercase tracking-[0.25em] mb-4 font-body">
+          Campo propio · General Rodríguez
+        </p>
+        <h1 class="fade-up delay-1 hero-text font-display text-5xl md:text-7xl font-black leading-tight mb-6">
+          El jardín que<br />
+          <span class="text-sage-light">soñás, hoy.</span>
+        </h1>
+        <p class="fade-up delay-2 text-white/75 text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-10">
+          Grama premium cultivada en nuestro propio campo. Cortada y entregada el mismo día.
+        </p>
+        <div class="fade-up delay-3 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#calculadora"
+             class="bg-sage-xlight text-forest font-bold px-8 py-4 rounded-full hover:bg-sage-light transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+            Calculá tu presupuesto
+          </a>
+          <a href="https://wa.me/5491100000000" target="_blank" rel="noreferrer"
+             class="border border-white/40 text-white px-8 py-4 rounded-full hover:bg-white/10 transition-all flex items-center gap-2 justify-center">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            Escribinos
+          </a>
         </div>
-    </header>
-
-    <section id="calculadora" class="py-16 px-4">
-        <div class="max-w-2xl mx-auto bg-white p-8 md:p-12 rounded-[2rem] shadow-2xl border border-slate-100">
-            <h2 class="text-3xl font-black text-center mb-2 text-emerald-800 uppercase italic tracking-tighter">Calculadora de Césped</h2>
-            <p class="text-center text-slate-500 mb-8 font-medium italic">Ingresá las medidas de tu terreno</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div>
-                    <label class="block text-xs font-black uppercase text-slate-400 mb-2 tracking-widest leading-none">Ancho (metros)</label>
-                    <input type="number" id="ancho" placeholder="Ej: 5" class="w-full bg-slate-50 p-4 rounded-xl border-2 border-slate-100 focus:border-emerald-500 outline-none transition text-xl font-bold" oninput="calcular()">
-                </div>
-                <div>
-                    <label class="block text-xs font-black uppercase text-slate-400 mb-2 tracking-widest leading-none">Largo (metros)</label>
-                    <input type="number" id="largo" placeholder="Ej: 10" class="w-full bg-slate-50 p-4 rounded-xl border-2 border-slate-100 focus:border-emerald-500 outline-none transition text-xl font-bold" oninput="calcular()">
-                </div>
-            </div>
-
-            <div class="bg-emerald-50 rounded-2xl p-6 flex flex-col items-center justify-center text-center border border-emerald-100 mb-8">
-                <p class="text-emerald-700 font-bold uppercase text-[10px] tracking-[0.2em] mb-1">Total Metros Cuadrados</p>
-                <div class="text-5xl font-black text-emerald-900 leading-none mb-1"><span id="resultado">0</span> <span class="text-xl">m²</span></div>
-                <p class="text-emerald-600 font-medium text-sm">Necesitarás aprox. <span id="panes" class="font-bold underline">0</span> panes</p>
-            </div>
-
-            <button onclick="enviarWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-5 rounded-xl font-black text-lg uppercase tracking-widest shadow-lg transition-all flex items-center justify-center gap-4 group">
-                <i data-lucide="message-circle" class="group-hover:scale-110 transition"></i>
-                Consultar por WhatsApp
-            </button>
+        <div class="fade-up delay-4 mt-16 flex flex-wrap justify-center gap-8 text-white/60 text-sm">
+          <div class="flex items-center gap-2"><i data-lucide="truck" class="w-4 h-4 text-sage"></i> Entrega mismo día</div>
+          <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-sage"></i> Garantía de arraigo</div>
+          <div class="flex items-center gap-2"><i data-lucide="star" class="w-4 h-4 text-sage"></i> +500 jardines instalados</div>
         </div>
+      </div>
+
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 text-[10px] uppercase tracking-widest select-none">
+        <span>scroll</span>
+        <div class="w-px h-10 bg-gradient-to-b from-white/30 to-transparent animate-pulse"></div>
+      </div>
     </section>
 
-    <footer class="py-8 bg-white border-t border-slate-100 text-center">
-        <p class="font-black text-emerald-900 tracking-tight">GRAMA FYF</p>
-        <p class="text-slate-400 text-xs mt-1 italic">General Rodríguez, Buenos Aires.</p>
+    <!-- 2. QUIÉNES SOMOS -->
+    <section id="nosotros" class="py-24 px-6 md:px-16 bg-cream-dark">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div class="relative">
+            <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80"
+                   alt="Campo de cultivo Grama FYF"
+                   class="w-full h-full object-cover" />
+            </div>
+            <div class="absolute -bottom-5 -right-5 bg-forest text-white px-6 py-4 rounded-2xl shadow-xl">
+              <div class="text-3xl font-display font-black">15+</div>
+              <div class="text-sage text-xs mt-0.5">años cultivando</div>
+            </div>
+          </div>
+          <div>
+            <p class="text-forest-xlight text-xs uppercase tracking-widest mb-3 font-bold">Nuestra historia</p>
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-forest leading-tight mb-6">
+              Raíces familiares,<br/>pasión por lo verde
+            </h2>
+            <p class="text-bark-light leading-relaxed mb-5">
+              Grama FYF nació en los campos de General Rodríguez hace más de 15 años, cuando la familia decidió convertir su amor por la tierra en un proyecto de vida. Lo que empezó como un pequeño lote familiar hoy es uno de los viveros de césped más reconocidos de la zona oeste.
+            </p>
+            <p class="text-bark-light leading-relaxed mb-8">
+              Cada pan de grama que sale de nuestros campos lleva consigo meses de cuidado, riego controlado y selección artesanal. No vendemos pasto — entregamos la certeza de un jardín que va a prender.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span class="bg-sage-xlight text-forest text-xs font-bold px-4 py-2 rounded-full">Campo propio</span>
+              <span class="bg-sage-xlight text-forest text-xs font-bold px-4 py-2 rounded-full">Entrega directa</span>
+              <span class="bg-sage-xlight text-forest text-xs font-bold px-4 py-2 rounded-full">Asesoramiento gratis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. TIPOS DE CÉSPED -->
+    <section id="cesped" class="py-24 px-6 md:px-16 bg-cream">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14">
+          <p class="text-forest-xlight text-xs uppercase tracking-widest mb-3 font-bold">Nuestras variedades</p>
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-forest mb-4">Tipos de Césped</h2>
+          <p class="text-bark-light max-w-md mx-auto leading-relaxed">
+            Seleccionamos las tres variedades que mejor se adaptan al clima y suelo de la región bonaerense.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+
+          <!-- Bahiana -->
+          <div class="grass-card bg-white rounded-3xl overflow-hidden shadow-md border border-cream-dark group">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1485637701894-09ad422f6de6?w=600&q=80"
+                   alt="Grama Bahiana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute top-3 right-3 bg-forest/80 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">Sombra</div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <i data-lucide="cloud-sun" class="w-4 h-4 text-sage"></i>
+                <h3 class="font-display text-xl font-bold text-forest">Grama Bahiana</h3>
+              </div>
+              <p class="text-bark-light text-sm leading-relaxed mb-5">
+                La más popular para jardines con presencia de sombra. Textura fina, color verde intenso y excelente cobertura natural.
+              </p>
+              <a href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20la%20Grama%20Bahiana%2C%20%C2%BFpueden%20darme%20informaci%C3%B3n?"
+                 target="_blank" rel="noreferrer"
+                 class="flex items-center gap-2 text-sm font-bold text-forest hover:text-forest-xlight transition-colors">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                Consultar precio
+              </a>
+            </div>
+          </div>
+
+          <!-- Bermuda -->
+          <div class="grass-card bg-white rounded-3xl overflow-hidden shadow-md border border-cream-dark group">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+                   alt="Bermuda" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute top-3 right-3 bg-amber-600/85 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">Sol pleno</div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <i data-lucide="sun" class="w-4 h-4 text-amber-500"></i>
+                <h3 class="font-display text-xl font-bold text-forest">Bermuda</h3>
+              </div>
+              <p class="text-bark-light text-sm leading-relaxed mb-5">
+                La variedad más resistente al tráfico y al sol directo. Recuperación rápida, ideal para espacios deportivos y jardines de uso intensivo.
+              </p>
+              <a href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20la%20Grama%20Bermuda%2C%20%C2%BFpueden%20darme%20informaci%C3%B3n?"
+                 target="_blank" rel="noreferrer"
+                 class="flex items-center gap-2 text-sm font-bold text-forest hover:text-forest-xlight transition-colors">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                Consultar precio
+              </a>
+            </div>
+          </div>
+
+          <!-- Esmeralda -->
+          <div class="grass-card bg-white rounded-3xl overflow-hidden shadow-md border border-cream-dark group">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80"
+                   alt="Grama Esmeralda" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute top-3 right-3 bg-emerald-700/85 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">Premium</div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i>
+                <h3 class="font-display text-xl font-bold text-forest">Grama Esmeralda</h3>
+              </div>
+              <p class="text-bark-light text-sm leading-relaxed mb-5">
+                La opción de élite para jardines de diseño. Color verde brillante, textura uniforme y aspecto impecable todo el año.
+              </p>
+              <a href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20la%20Grama%20Esmeralda%2C%20%C2%BFpueden%20darme%20informaci%C3%B3n?"
+                 target="_blank" rel="noreferrer"
+                 class="flex items-center gap-2 text-sm font-bold text-forest hover:text-forest-xlight transition-colors">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                Consultar precio
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CALCULADORA -->
+    <section id="calculadora" class="py-24 px-6 md:px-16 bg-forest relative overflow-hidden grain">
+      <div class="absolute -top-32 -right-32 w-80 h-80 bg-forest-light/40 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-forest-xlight/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-2xl mx-auto relative z-10">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center justify-center w-14 h-14 bg-white/10 rounded-2xl border border-white/10 mb-5">
+            <i data-lucide="calculator" class="w-7 h-7 text-sage-light"></i>
+          </div>
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Calculadora de Panes</h2>
+          <p class="text-sage text-base max-w-sm mx-auto">
+            Ingresá las medidas de tu espacio y te decimos cuántos panes necesitás al instante.
+          </p>
+        </div>
+
+        <div class="bg-cream rounded-3xl p-7 md:p-10 shadow-2xl">
+          <div class="grid grid-cols-2 gap-5 mb-6">
+            <div>
+              <label class="block text-forest text-sm font-bold mb-2">Ancho (metros)</label>
+              <input type="number" id="ancho" min="0" step="0.1" placeholder="ej: 5"
+                     class="calc-input w-full border-2 border-sage-xlight bg-white rounded-xl px-4 py-3 text-forest text-base placeholder-sage transition-shadow" />
+            </div>
+            <div>
+              <label class="block text-forest text-sm font-bold mb-2">Largo (metros)</label>
+              <input type="number" id="largo" min="0" step="0.1" placeholder="ej: 8"
+                     class="calc-input w-full border-2 border-sage-xlight bg-white rounded-xl px-4 py-3 text-forest text-base placeholder-sage transition-shadow" />
+            </div>
+          </div>
+
+          <div id="resultado" class="bg-forest-light/10 border border-sage-xlight rounded-2xl p-6 mb-6 transition-opacity duration-300 opacity-40">
+            <p class="text-forest/60 text-xs uppercase tracking-widest mb-4 flex items-center gap-1.5">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+              Resultado
+            </p>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-white rounded-2xl p-4 text-center border border-cream-dark">
+                <div id="m2" class="text-4xl font-display font-black text-forest">—</div>
+                <div class="text-forest/50 text-sm mt-1">m² totales</div>
+              </div>
+              <div class="bg-forest rounded-2xl p-4 text-center">
+                <div id="panes" class="text-4xl font-display font-black text-white">—</div>
+                <div class="text-sage text-sm mt-1">panes necesarios</div>
+              </div>
+            </div>
+            <p id="nota" class="text-forest/40 text-xs mt-4 text-center hidden">
+              Basado en 2 panes por m². Recomendamos agregar un 10% de margen para espacios irregulares.
+            </p>
+          </div>
+
+          <div>
+            <a id="btnWA" href="#" target="_blank" rel="noreferrer"
+               class="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-bold text-base
+                      bg-forest text-white opacity-40 pointer-events-none transition-all">
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+              <span id="btnText">Completá las medidas para continuar</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-bark text-white py-14 px-6 md:px-16">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-8 h-8 rounded-full bg-sage-xlight flex items-center justify-center">
+                <i data-lucide="leaf" class="text-forest w-4 h-4"></i>
+              </div>
+              <span class="font-display text-2xl font-bold">Grama FYF</span>
+            </div>
+            <p class="text-white/50 text-sm leading-relaxed">
+              Panes de césped premium cultivados en General Rodríguez. Calidad y entrega garantizada.
+            </p>
+          </div>
+          <div>
+            <span class="text-white font-bold text-sm block mb-4">Navegación</span>
+            <div class="flex flex-col gap-2.5 text-sm text-white/50">
+              <a href="#inicio"      class="hover:text-sage transition-colors">Inicio</a>
+              <a href="#nosotros"    class="hover:text-sage transition-colors">Quiénes somos</a>
+              <a href="#cesped"      class="hover:text-sage transition-colors">Tipos de Césped</a>
+              <a href="#calculadora" class="hover:text-sage transition-colors">Calculadora</a>
+            </div>
+          </div>
+          <div>
+            <span class="text-white font-bold text-sm block mb-4">Contacto</span>
+            <div class="flex flex-col gap-3 text-sm text-white/50">
+              <a href="https://wa.me/5491100000000" target="_blank" rel="noreferrer"
+                 class="flex items-center gap-2 hover:text-sage transition-colors">
+                <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+              </a>
+              <div class="flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4"></i> General Rodríguez, Buenos Aires
+              </div>
+              <!-- Reemplazá # con tu Instagram -->
+              <a href="#" class="flex items-center gap-2 hover:text-sage transition-colors">
+                <i data-lucide="instagram" class="w-4 h-4"></i> Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-2 text-white/30 text-xs">
+          <span>© 2025 Grama FYF. Todos los derechos reservados.</span>
+          <span>Hecho con 🌿 en Argentina</span>
+        </div>
+      </div>
     </footer>
 
-    <script>
-        // Inicializar iconos
-        lucide.createIcons();
+  </main>
+</div>
 
-        function calcular() {
-            const ancho = parseFloat(document.getElementById('ancho').value) || 0;
-            const largo = parseFloat(document.getElementById('largo').value) || 0;
-            const total = ancho * largo;
-            
-            document.getElementById('resultado').innerText = total % 1 === 0 ? total : total.toFixed(1);
-            // Cálculo de panes (promedio 2 panes por m2)
-            document.getElementById('panes').innerText = Math.ceil(total * 2);
-        }
+<script>
+  lucide.createIcons();
 
-        function enviarWhatsApp() {
-            const metros = document.getElementById('resultado').innerText;
-            const panes = document.getElementById('panes').innerText;
-            const numero = "5491100000000"; // CAMBIAR POR EL CELULAR DE TU AMIGO
-            const msj = `Hola FYF! Consulto por presupuesto para cubrir ${metros} m2 (${panes} panes aprox.) en General Rodríguez.`;
-            window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msj)}`, '_blank');
-        }
-    </script>
+  const sidebar  = document.getElementById('sidebar');
+  const overlay  = document.getElementById('overlay');
+  const menuIcon = document.getElementById('menuIcon');
+  let sidebarOpen = false;
+
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    sidebarOpen = !sidebarOpen;
+    if (sidebarOpen) {
+      sidebar.classList.remove('-translate-x-full');
+      overlay.classList.remove('hidden');
+      menuIcon.setAttribute('data-lucide', 'x');
+    } else {
+      closeSidebar();
+    }
+    lucide.createIcons();
+  });
+
+  function closeSidebar() {
+    sidebarOpen = false;
+    sidebar.classList.add('-translate-x-full');
+    overlay.classList.add('hidden');
+    menuIcon.setAttribute('data-lucide', 'menu');
+    lucide.createIcons();
+  }
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 1024) closeSidebar();
+    });
+  });
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+    });
+  });
+
+  const WA_NUMBER    = '5491100000000';
+  const PANES_POR_M2 = 2;
+
+  const anchoInput = document.getElementById('ancho');
+  const largoInput = document.getElementById('largo');
+  const m2Span     = document.getElementById('m2');
+  const panesSpan  = document.getElementById('panes');
+  const resultado  = document.getElementById('resultado');
+  const nota       = document.getElementById('nota');
+  const btnWA      = document.getElementById('btnWA');
+  const btnText    = document.getElementById('btnText');
+
+  function calcular() {
+    const ancho = parseFloat(anchoInput.value) || 0;
+    const largo = parseFloat(largoInput.value) || 0;
+    const m2    = ancho * largo;
+    const panes = Math.ceil(m2 * PANES_POR_M2);
+
+    if (m2 > 0) {
+      m2Span.textContent    = m2.toFixed(2);
+      panesSpan.textContent = panes;
+      resultado.classList.remove('opacity-40');
+      resultado.classList.add('opacity-100');
+      nota.classList.remove('hidden');
+
+      const msg = encodeURIComponent(
+        `¡Hola Grama FYF! 👋\n\n` +
+        `Usé la calculadora y necesito cubrir *${m2.toFixed(2)} m²* (${ancho}m × ${largo}m).\n` +
+        `Eso serían aproximadamente *${panes} panes* de césped.\n\n` +
+        `¿Me pueden dar un presupuesto? ¡Gracias!`
+      );
+
+      btnWA.href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+      btnWA.classList.remove('opacity-40', 'pointer-events-none');
+      btnText.textContent = 'Pedir Presupuesto por WhatsApp';
+    } else {
+      m2Span.textContent    = '—';
+      panesSpan.textContent = '—';
+      resultado.classList.remove('opacity-100');
+      resultado.classList.add('opacity-40');
+      nota.classList.add('hidden');
+      btnWA.href = '#';
+      btnWA.classList.add('opacity-40', 'pointer-events-none');
+      btnText.textContent = 'Completá las medidas para continuar';
+    }
+  }
+
+  anchoInput.addEventListener('input', calcular);
+  largoInput.addEventListener('input', calcular);
+</script>
+
 </body>
 </html>
+```
+
+---
+
+**Antes de subir a GitHub, cambiá estas 2 cosas:**
+```
+5491100000000  →  tu número real (todas las ocurrencias)
+Grama FYF      →  el nombre real si es diferente
