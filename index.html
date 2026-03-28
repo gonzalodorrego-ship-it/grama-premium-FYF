@@ -65,11 +65,10 @@
   </style>
 </head>
 
-<body class="font-body bg-cream text-forest" style="font-family:'Lato',sans-serif">
+<body class="font-body bg-cream text-forest">
 
 <div class="flex min-h-screen">
 
-  <!-- ══ SIDEBAR ══ -->
   <aside id="sidebar"
     class="fixed top-0 left-0 h-full w-64 z-40 flex flex-col bg-forest text-white
            -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
@@ -103,7 +102,6 @@
     </div>
   </aside>
 
-  <!-- ══ MOBILE TOPBAR ══ -->
   <header class="lg:hidden fixed top-0 left-0 right-0 z-50 bg-forest/90 backdrop-blur-md px-5 h-16 flex items-center justify-between border-b border-forest-light">
     <div class="flex items-center gap-2">
       <div class="w-7 h-7 rounded-full bg-sage-xlight flex items-center justify-center">
@@ -118,14 +116,11 @@
 
   <div id="overlay" class="fixed inset-0 z-30 bg-black/50 hidden lg:hidden" onclick="closeSidebar()"></div>
 
-  <!-- ══ MAIN ══ -->
   <main class="flex-1 lg:ml-64 pt-16 lg:pt-0">
 
-    <!-- 1. HERO -->
     <section id="inicio" class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden grain">
-      <!-- 📸 Reemplazá esta URL con tu foto del campo -->
       <div class="absolute inset-0 bg-cover bg-center"
-           style="background-image: url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1920&q=80')"></div>
+           style="background-image: url('https://images.unsplash.com/photo-1533460004989-cef01064af7c?q=80&w=2070&auto=format&fit=crop')"></div>
       <div class="absolute inset-0 bg-gradient-to-br from-forest/80 via-forest/60 to-black/40"></div>
 
       <div class="relative z-10 text-center text-white px-6 max-w-3xl mx-auto">
@@ -141,7 +136,7 @@
              class="bg-sage-xlight text-forest font-bold px-8 py-4 rounded-full hover:bg-sage-light transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
             Calculá tu presupuesto
           </a>
-          <a href="https://wa.me/5491100000000" target="_blank" rel="noreferrer"
+          <a href="https://wa.me/5491169670130" target="_blank" rel="noreferrer"
              class="border border-white/40 text-white px-8 py-4 rounded-full hover:bg-white/10 transition-all flex items-center gap-2 justify-center">
             <i data-lucide="message-circle" class="w-5 h-5"></i>
             Escribinos
@@ -160,13 +155,12 @@
       </div>
     </section>
 
-    <!-- 2. QUIÉNES SOMOS -->
     <section id="nosotros" class="py-24 px-6 md:px-16 bg-cream-dark">
       <div class="max-w-5xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div class="relative">
             <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80"
+              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1932&auto=format&fit=crop"
                    alt="Campo de cultivo Grama FYF" class="w-full h-full object-cover" />
             </div>
             <div class="absolute -bottom-5 -right-5 bg-forest text-white px-6 py-4 rounded-2xl shadow-xl">
@@ -195,7 +189,6 @@
       </div>
     </section>
 
-    <!-- 3. TIPOS DE CÉSPED -->
     <section id="cesped" class="py-24 px-6 md:px-16 bg-cream">
       <div class="max-w-5xl mx-auto">
         <div class="text-center mb-14">
@@ -207,10 +200,9 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
 
-          <!-- Bahiana -->
           <div class="grass-card bg-white rounded-3xl overflow-hidden shadow-md border border-cream-dark group">
             <div class="relative h-48 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1485637701894-09ad422f6de6?w=600&q=80"
+              <img src="https://images.unsplash.com/photo-1533460004989-cef01064af7c?q=80&w=600&auto=format&fit=crop"
                    alt="Grama Bahiana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div class="absolute top-3 right-3 bg-forest/80 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">Sombra</div>
             </div>
@@ -222,7 +214,7 @@
               <p class="text-bark-light text-sm leading-relaxed mb-5">
                 La más popular para jardines con presencia de sombra. Textura fina, color verde intenso y excelente cobertura natural.
               </p>
-              <a href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20la%20Grama%20Bahiana%2C%20%C2%BFpueden%20darme%20informaci%C3%B3n?"
+              <a href="https://wa.me/5491169670130?text=Hola!%20Me%20interesa%20la%20Grama%20Bahiana%2C%20%C2%BFpueden%20darme%20informaci%C3%B3n?"
                  target="_blank" rel="noreferrer"
                  class="flex items-center gap-2 text-sm font-bold text-forest hover:text-forest-xlight transition-colors">
                 <i data-lucide="message-circle" class="w-4 h-4"></i> Consultar precio
@@ -230,10 +222,9 @@
             </div>
           </div>
 
-          <!-- Bermuda -->
           <div class="grass-card bg-white rounded-3xl overflow-hidden shadow-md border border-cream-dark group">
             <div class="relative h-48 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+              <img src="https://images.unsplash.com/photo-1592150623848-655a0e800192?q=80&w=600&auto=format&fit=crop"
                    alt="Bermuda" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div class="absolute top-3 right-3 bg-amber-600/85 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">Sol pleno</div>
             </div>
@@ -245,7 +236,7 @@
               <p class="text-bark-light text-sm leading-relaxed mb-5">
                 La variedad más resistente al tráfico y al sol directo. Recuperación rápida, ideal para jardines de uso intensivo.
               </p>
-              <a href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20la%20Grama%20Bermuda%2C%20%C2%BFpueden%20darme%20informaci%C3%B3n?"
+              <a href="https://wa.me/5491169670130?text=Hola!%20Me%20interesa%20la%20Grama%20Bermuda%2C%20%C2%BFpueden%20darme%20informaci%C3%B3n?"
                  target="_blank" rel="noreferrer"
                  class="flex items-center gap-2 text-sm font-bold text-forest hover:text-forest-xlight transition-colors">
                 <i data-lucide="message-circle" class="w-4 h-4"></i> Consultar precio
@@ -253,10 +244,9 @@
             </div>
           </div>
 
-          <!-- Esmeralda -->
           <div class="grass-card bg-white rounded-3xl overflow-hidden shadow-md border border-cream-dark group">
             <div class="relative h-48 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80"
+              <img src="https://images.unsplash.com/photo-1557429287-b2e26467fc2b?q=80&w=600&auto=format&fit=crop"
                    alt="Grama Esmeralda" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div class="absolute top-3 right-3 bg-emerald-700/85 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">Premium</div>
             </div>
@@ -268,7 +258,7 @@
               <p class="text-bark-light text-sm leading-relaxed mb-5">
                 La opción de élite para jardines de diseño. Color verde brillante, textura uniforme y aspecto impecable todo el año.
               </p>
-              <a href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20la%20Grama%20Esmeralda%2C%20%C2%BFpueden%20darme%20informaci%C3%B3n?"
+              <a href="https://wa.me/5491169670130?text=Hola!%20Me%20interesa%20la%20Grama%20Esmeralda%2C%20%C2%BFpueden%20darme%20informaci%C3%B3n?"
                  target="_blank" rel="noreferrer"
                  class="flex items-center gap-2 text-sm font-bold text-forest hover:text-forest-xlight transition-colors">
                 <i data-lucide="message-circle" class="w-4 h-4"></i> Consultar precio
@@ -280,7 +270,6 @@
       </div>
     </section>
 
-    <!-- 4. CALCULADORA -->
     <section id="calculadora" class="py-24 px-6 md:px-16 bg-forest relative overflow-hidden grain">
       <div class="absolute -top-32 -right-32 w-80 h-80 bg-forest-light/40 rounded-full blur-3xl pointer-events-none"></div>
       <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-forest-xlight/20 rounded-full blur-3xl pointer-events-none"></div>
@@ -337,7 +326,6 @@
       </div>
     </section>
 
-    <!-- FOOTER (sin columna de navegación) -->
     <footer class="bg-bark text-white py-14 px-6 md:px-16">
       <div class="max-w-5xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
@@ -355,17 +343,13 @@
           <div>
             <span class="text-white font-bold text-sm block mb-4">Contacto</span>
             <div class="flex flex-col gap-3 text-sm text-white/50">
-              <a href="https://wa.me/5491100000000" target="_blank" rel="noreferrer"
+              <a href="https://wa.me/5491169670130" target="_blank" rel="noreferrer"
                  class="flex items-center gap-2 hover:text-sage transition-colors">
                 <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
               </a>
               <div class="flex items-center gap-2">
                 <i data-lucide="map-pin" class="w-4 h-4"></i> General Rodríguez, Buenos Aires
               </div>
-              <!-- Reemplazá # con tu Instagram -->
-              <a href="#" class="flex items-center gap-2 hover:text-sage transition-colors">
-                <i data-lucide="instagram" class="w-4 h-4"></i> Instagram
-              </a>
             </div>
           </div>
         </div>
@@ -382,8 +366,8 @@
 <script>
   lucide.createIcons();
 
-  const sidebar  = document.getElementById('sidebar');
-  const overlay  = document.getElementById('overlay');
+  const sidebar   = document.getElementById('sidebar');
+  const overlay   = document.getElementById('overlay');
   const menuIcon = document.getElementById('menuIcon');
   let sidebarOpen = false;
 
@@ -409,18 +393,7 @@
     link.addEventListener('click', () => { if (window.innerWidth < 1024) closeSidebar(); });
   });
 
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
-    });
-  });
-
-  const WA_NUMBER    = '5491100000000';
+  const WA_NUMBER    = '5491169670130';
   const PANES_POR_M2 = 2;
   const anchoInput = document.getElementById('ancho');
   const largoInput = document.getElementById('largo');
